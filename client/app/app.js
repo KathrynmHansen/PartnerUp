@@ -1,12 +1,13 @@
 angular.module('PU', [
-  'PU.auth'
+  'ngRoute',
+  'PU.signin'
   ])
 .config(function($routeProvider, $httpProvider) {
   $routeProvider
   .when('/', {
-    templateUrl: 'auth/signin.html',
+    templateUrl: 'signin/signin.html',
     controller: 'AuthController'
   })
 })
 
-.run();
+// .run();
