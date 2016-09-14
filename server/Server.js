@@ -44,6 +44,10 @@ app.use(session({secret: "funnyGilby"}));
 app.use(express(path.join(__dirname, '../client')));
 app.get("/auth/:service", AuthPort.app);
 
+app.get('/', function(req, res){
+  res.send();
+})
+
 app.get("/myGroups", function(req, res){
   MP.user.groups(req.session.uid, req.session.accessToken)
   .then(function(data){

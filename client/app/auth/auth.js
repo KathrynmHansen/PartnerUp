@@ -3,7 +3,9 @@
 // in our signup/signin forms using the injected Auth service
 angular.module('PU.auth', [])
 
-.controller('AuthController', function ($scope, $window, $location) {
+.controller('AuthController', function ($scope, $window, $location. APICalls) {
   $scope.user = {};
-
+  $scope.loginMakerPass = function(){
+    return APICalls.loginMakerPass();
+  }
 });
