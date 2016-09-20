@@ -18,6 +18,7 @@
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.2",
     "bower": "^1.7.9",
+    "clipboard": "^1.5.12",
     "express": "^4.4.5",
     "express-session": "^1.14.1",
     "jwt-simple": "^0.2.0",
