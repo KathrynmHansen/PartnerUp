@@ -93,3 +93,17 @@ td{
   font-family: 'Josefin Sans', sans-serif;
 
 }
+.main{
+  font-family: 'Josefin Sans', sans-serif;
+
+}
+.signout{
+  float: right;
+  background-color: cornflowerblue;
+  color:white;
+  border-radius: 5px;
+  float: right;
+  height:30px;
+  width: 125px;
+  font-size:13px;
+}
