@@ -1,6 +1,6 @@
 <div ng-class="{toBackground: creatingGroup}" ng-show="initialized" class='main'>
   <button class="signout" ng-click="signOut()">Log out</button>
-  <h1 class="welcome">Hello, {{currentUser.name.includes("Gilbert") ? "Gilby" : currentUser.name || "Gilby"}}!</h1>
+  <h1 class="welcome">Welcome, {{currentUser.name.includes("Gilbert") ? "Gilby" : currentUser.name || "Gilby"}}!</h1>
 
   <!--Control buttons-->
   <div class="controls">
@@ -43,8 +43,8 @@
   <!--The table of current groupings-->
   <div ng-show="partnerUp" class="studentGroups">
     
-    <input ng-model="genTitle">
-    <button ng-click="finalize()" ng-show="partnerUp && !finalized">Finalize this pairing</button>
+    <input ng-model="genTitle" placeholder="Title...">
+    <button  class='final' ng-click="finalize()" ng-show="partnerUp && !finalized">Finalize this pairing</button>
     <table id="partners">
     
       <tr>

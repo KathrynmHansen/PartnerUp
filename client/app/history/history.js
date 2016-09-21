@@ -25,6 +25,7 @@ angular.module('PU.history', ['PU.factories'])
       method: 'GET',
       url: `/database/${$routeParams.class}/pairs`
     }).then(function(data){
+      console.log('hey hey hey',data.data)
     $scope.pastPairs = data.data
   })
   }
