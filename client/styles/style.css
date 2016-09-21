@@ -95,15 +95,49 @@ td{
 }
 .main{
   font-family: 'Josefin Sans', sans-serif;
-
+  margin:20px;
 }
 .signout{
   float: right;
   background-color: cornflowerblue;
   color:white;
   border-radius: 5px;
-  float: right;
   height:30px;
   width: 125px;
   font-size:13px;
+}
+.partnerBtn{
+  background-color: cornflowerblue;
+  color:white;
+  border-radius: 5px;
+  margin-top: 10px;
+  height:30px;
+  width: 125px;
+  font-size:13px;
+}
+.createClass{
+  background-color: cornflowerblue;
+  color:white;
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-bottom:10px;
+  height:30px;
+  width: 125px;
+  font-size:13px;
+}
+.histBtn{
+    background-color: cornflowerblue;
+  color:white;
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-bottom:10px;
+  height:30px;
+  width: 125px;
+  font-size:13px;
+}
+.currClass{
+  font-size:20px;
+}
+.groupSize{
+  font-size:20px;
 }
