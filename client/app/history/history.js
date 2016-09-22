@@ -4,17 +4,17 @@ angular.module('PU.history', ['PU.factories'])
   
   // //set up for copy to clipboard function 
   new Clipboard('.clipyclip');
-  $scope.groupSize = 2
+  $scope.groupSize = 2;
   $scope.generationId = 0; 
   $scope.pastPairs = [];
   $scope.generations = [];
-  $scope.prev='prev'
-  $scope.nex= 'next'
-  $scope.currGen = 0
-  $scope.maxGen = 0
-  $scope.currClass = $routeParams.class //CURRENT CLASS ID!
-  $scope.badPartners = []
-  $scope.index = 0
+  $scope.prev='prev';
+  $scope.nex= 'next';
+  $scope.currGen = 0;
+  $scope.maxGen = 0;
+  $scope.currClass = $routeParams.class; //CURRENT CLASS ID!
+  $scope.badPartners = [];
+  $scope.index = 0;
   $scope.library = {};
 
   //*********************************************************************************
@@ -158,12 +158,31 @@ angular.module('PU.history', ['PU.factories'])
 }
 
   $scope.toggleBadPartners = function(pair){
-    console.log(pair)
-      $scope.badPartners.push(pair);
     
-      console.log($scope.badPartners)
-    }
+    // if(!$scope.badPartners.contains(pair)){
+    //   $scope.badPartners.push(pair);
+    // }
+    // else{
+    if($scope.badPartners.length){
+      if($scope.badPartners.includes(pair)){
+       //found the group in the locked groups
+        var index = $scope.badPartners.indexOf(pair)
+        var something = $scope.badPartners.splice(index,1);
+        console.log('something ', something)
+      }
 
+      else if(!$scope.badPartners.includes(pair)){
+          $scope.badPartners.push(pair);
+      }
+      
+      
+    }
+    else{
+      $scope.badPartners.push(pair);
+    }
+      console.log('HELLO: ',$scope.badPartners)
+      console.log("$scope.badPartners has pair? ", $scope.badPartners.includes(pair))
+    }
   
 
     $scope.getIndexArray = function(num){
@@ -176,7 +195,7 @@ angular.module('PU.history', ['PU.factories'])
   //*********************************************************************************
   //takes you back to the homepage when homepage button is clicked 
   //*********************************************************************************
-
+  console.log('yo',$scope.badPartners)
   $scope.goHome = function(){
     $location.path('/');
   }
