@@ -258,3 +258,21 @@ align: center;
  float: right;
  margin-right: 495px;
 }
+.instructorList{
+ margin-right: 50px;
+ float: right;
+ clear: right;
+ border: 1px solid cornflowerblue;
+ border-radius: 25px;
+ padding: 10px;
+ margin-bottom: 15px;
+}
+
+.fellowList{
+ margin-right: 40px;
+ float: right;
+ clear: right;
+ border: 1px solid cornflowerblue;
+ border-radius: 25px;
+ padding: 10px;
+}
