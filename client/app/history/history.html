@@ -18,6 +18,7 @@
       <button class='changers prev' ng-click='previous()'><</button>
       <h3 class="currGenTitle">{{currGen}}</h3>
       <button class= 'changers next' ng-click='next()'>></button>
+      <button class="oopsies" ng-click="if(confirm('ARE YOU SURE YOU WANT TO DO THIS?? NO TAKESIES BACKSIS')) whoops(); return false" >opps! be gone!</button>
     </div>
     <table class="pair" id="pair">
       <tr>
