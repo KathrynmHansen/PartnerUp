@@ -212,6 +212,20 @@ angular.module('PU.history', ['PU.factories'])
   }
 
   //*********************************************************************************
+  //deletes a generation from the table
+  //*********************************************************************************
+
+  $scope.deleteAllGen = function(){
+    DB.deleteAllGenerations(currClass)
+      .then(function(resp){
+        console.log(resp);
+      })
+      .catch(function(err){
+        console.log(err)
+      })
+  }
+
+  //*********************************************************************************
   //sets the page up for success! calls all necessary functions. 
   //*********************************************************************************
 
