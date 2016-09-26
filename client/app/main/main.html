@@ -17,7 +17,7 @@
       <option ng-repeat="idx in getIndexArray(8)">{{idx+2}}</option>
     </select>
     <br>
-    <input type="checkbox" id="chbx" onchange="foo()"> Do past Pairs Matter?
+    <input type="checkbox" id="chbx" default='true' > No repeats
     <button ng-click="if(checkbox.checked === false) randomize(groupSizeSelect); trueRandomnize(groupSizeSelect)" class="partnerBtn">Partner Up!</button>
     <button ng-click="seeHistory()" class="histBtn">See History</button>
   </div>
