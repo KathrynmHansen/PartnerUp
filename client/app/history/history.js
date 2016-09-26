@@ -215,7 +215,7 @@ angular.module('PU.history', ['PU.factories'])
 
   $scope.deleteGen = function(){
     //delete generation from databasee
-    DB.deleteGeneration(currClass, generationId)
+    DB.deleteGeneration($scope.currClass, $scope.generationId)
       .then(function(resp){
         console.log(resp)
       })
@@ -226,7 +226,8 @@ angular.module('PU.history', ['PU.factories'])
   //*********************************************************************************
 
   $scope.deleteAllGen = function(){
-    DB.deleteAllGenerations(currClass)
+    console.log($scope.currClass)
+    DB.deleteAllGenerations($scope.currClass)
       .then(function(resp){
         console.log(resp);
       })
