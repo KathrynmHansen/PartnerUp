@@ -1,7 +1,7 @@
 angular.module('PU.history', ['PU.factories'])
 
 .controller('HistoryController', function ($scope, $location, $http, $routeParams, DB, StateSaver, CurrentUser,$route) {
-  
+  document.getElementById("bodyclass").className = "";
   new Clipboard('.clipyclip');
   $scope.generationId = 0; //THE CURRENT GENERATION
   $scope.pastPairs = []; //all of past pairs for the group
