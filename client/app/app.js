@@ -18,7 +18,6 @@ angular.module('PU', [
   .when('/createPool', {
     templateUrl: 'createPool/createPool.html',
     controller: 'CreatePoolController'
-
   })
 })
 
