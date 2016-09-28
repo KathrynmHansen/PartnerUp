@@ -25,7 +25,7 @@
       <h3 class="currGenTitle">{{currGen}}</h3>
       <button class= 'changers next' ng-click='next()'>></button>
     </div>
-    <table class="pair" id="pair">
+    <table unselectable="on" class="pair unselectable" id="pair">
       <tr>
       <th class="indPair" ng-repeat="index in getIndexArray(pastGens[generationId][0].length)">Partner {{index + 1}}</th>
       </tr>
