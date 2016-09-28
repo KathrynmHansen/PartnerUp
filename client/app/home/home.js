@@ -1,6 +1,5 @@
 angular.module('PU.home', ['PU.factories'])
 
-
 .controller('HomeController', function ($scope, MakerPass, $location, $route, $http, StateSaver, DB, CurrentUser) {
 
 $scope.currentUser = {} //where we store the current user's information 
