@@ -3,6 +3,7 @@ angular.module('PU', [
   'ngRoute',
   'PU.signin',
   'PU.home',
+  'PU.createPool',
   'ngAnimate',
   ])
 .config(function($routeProvider, $httpProvider) {

@@ -11,6 +11,10 @@ $scope.showPools = function(){
   .catch(function(err){console.log('showPools err',err);})
 }
 
+$scope.goToCreatePool = function(){
+  $location.path('/createPool')
+}
+
  var init = (function(){ //function that runs on load; it'll call all the fns to set up the page
     
     new Clipboard('.clipyclip');
