@@ -40,13 +40,13 @@ angular.module('PU.createPool', ['PU.factories'])
     for(var i = 0; i<$scope.importedStudents.length; i++){
       console.log('four loop made it')
       var member = {};
-      member.user_uid = $scope.importedStudents[i].user.user_uid
+      member.user_uid = $scope.importedStudents[i].user_uid
       member.role = $scope.importedStudents[i].role
       console.log('dadada',member)
       members.push(member);
     }
     console.log('members', members)
-    var groupData = {'name': $scope.poolName, 'mksId': $scope.importedStudents[0].group_uid }
+    var groupData = {'name': $scope.poolName}
     console.log('goupData', groupData)
     DB.createClass(members, groupData)
     .then(function(resp){console.log('pool created')})

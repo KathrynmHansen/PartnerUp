@@ -107,7 +107,7 @@ angular.module('PU.factories', [])
       method: 'GET',
       url: '/groups'
     })
-    .then(resp => resp.data)
+    .then(resp => console.log('elliot',resp.data))
     .catch(err => err);
   }
 
