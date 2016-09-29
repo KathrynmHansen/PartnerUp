@@ -7,19 +7,27 @@ angular.module('PU.createPool', ['PU.factories'])
 
 
   $scope.importStudents = function(){
+
     MakerPass.getMemberships($scope.currentCohort)
     .then(function(data){
       console.log('data', data)
       for(var i = 0; i<data.length; i++){
       if(data[i].role === 'student'){
-      $scope.importedStudents.push(data[i])
+        var there = false
+        for(var j = 0; j<$scope.importedStudents.length;j++){
+        if(data[i].user_uid === $scope.importedStudents[j].user_uid){
+          there = true
+        }
+      }
+      if(there === false){
+        $scope.importedStudents.push(data[i])
+      }
     }
   }
-  console.log('$scope.importedStudents',$scope.importedStudents)
-  })
-
+})
     .catch(function(err){console.log(err)})
   }
+
 
   $scope.getIndexArray = function(num){
     var arr = [];
@@ -35,14 +43,11 @@ angular.module('PU.createPool', ['PU.factories'])
   }
 
   $scope.createPool = function(){
-    console.log('yo',$scope.importedStudents)
       var members=[];
     for(var i = 0; i<$scope.importedStudents.length; i++){
-      console.log('four loop made it')
       var member = {};
       member.user_uid = $scope.importedStudents[i].user_uid
       member.role = $scope.importedStudents[i].role
-      console.log('dadada',member)
       members.push(member);
     }
     console.log('members', members)
