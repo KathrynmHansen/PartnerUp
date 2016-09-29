@@ -3,6 +3,8 @@ angular.module('PU.createPool', ['PU.factories'])
 .controller('CreatePoolController', function ($scope, MakerPass, $location, $route, $http, StateSaver, DB, CurrentUser) {
   $scope.allCohorts = [];
   $scope.importedStudents = [];
+  $scope.importedAdmins = [];
+
   // $scope.currentCohort = '';
 
 
@@ -12,7 +14,7 @@ angular.module('PU.createPool', ['PU.factories'])
     .then(function(data){
       console.log('data', data)
       for(var i = 0; i<data.length; i++){
-      //if(data[i].role === 'student'){
+      if(data[i].role === 'student'){
         var there = false
         for(var j = 0; j<$scope.importedStudents.length;j++){
         if(data[i].user_uid === $scope.importedStudents[j].user_uid){
@@ -22,8 +24,20 @@ angular.module('PU.createPool', ['PU.factories'])
       if(there === false){
         $scope.importedStudents.push(data[i])
       }
-    //}
+    }
+  
+  if(data[i].role === 'fellow' || data[i].role === 'instructor'){
+    var isThere = false
+    for(var k = 0; k<$scope.importedAdmins.length; k++){
+      if(data[i].user_uid === $scope.importedAdmins[k]){
+        isThere = true
+      }
+    }
+    if(isThere === false){
+      $scope.importedAdmins.push(data[i]);
+    }
   }
+}
 })
     .catch(function(err){console.log(err)})
   }
@@ -54,11 +68,10 @@ angular.module('PU.createPool', ['PU.factories'])
     var groupData = {'name': $scope.poolName, 'group_size': $scope.groupSizeSelect}
     console.log('goupData', groupData)
     DB.createClass(members, groupData)
-    .then(function(resp){console.log('pool created', resp)})
+    .then(function(resp){ $location.path('/pools/'+resp)})
     .catch(function(err){console.log('pool not created', err)})
 
   }
-
   $scope.getRequest = function(){
     DB.getClasses().then(function(data){console.log('FUCK YEAH', data)})
     .catch(function(err){console.log('you fucked up', err)})
@@ -103,10 +116,10 @@ angular.module('PU.createPool', ['PU.factories'])
               console.log("Promises resolved");
               console.log('resolveData', resolveData[0])
               for(var i = 0; i<resolveData[0].length; i++){
-                if(resolveData[0][i].user_role === 'instructor' || resolveData[0][i].user_role === 'fellow'){
+                // if(resolveData[0][i].user_role === 'instructor' || resolveData[0][i].user_role === 'fellow'){
                   $scope.allCohorts.push(resolveData[0][i]);
                   console.log('$scope.allCohorts', $scope.allCohorts)
-                }
+                // }
               }
               // if()
 
