@@ -53,7 +53,7 @@ angular.module('PU', [
       $location.path('/');
     }
 
-    $scope.createPool = function(){
+    $scope.goToCreatePool = function(){
       $location.path('/createPool');
     }
 

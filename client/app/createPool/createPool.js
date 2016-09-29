@@ -34,7 +34,7 @@ angular.module('PU.createPool', ['PU.factories'])
     $scope.importedStudents.splice(index,1)
   }
 
-  $scope.createPool = function(members, name, mksId){
+  $scope.createPool = function(){
     console.log('yo',$scope.importedStudents)
       var members=[];
     for(var i = 0; i<$scope.importedStudents.length; i++){
