@@ -12,7 +12,7 @@ angular.module('PU.createPool', ['PU.factories'])
     .then(function(data){
       console.log('data', data)
       for(var i = 0; i<data.length; i++){
-      if(data[i].role === 'student'){
+      //if(data[i].role === 'student'){
         var there = false
         for(var j = 0; j<$scope.importedStudents.length;j++){
         if(data[i].user_uid === $scope.importedStudents[j].user_uid){
@@ -22,7 +22,7 @@ angular.module('PU.createPool', ['PU.factories'])
       if(there === false){
         $scope.importedStudents.push(data[i])
       }
-    }
+    //}
   }
 })
     .catch(function(err){console.log(err)})
