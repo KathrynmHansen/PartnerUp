@@ -54,7 +54,7 @@ angular.module('PU.createPool', ['PU.factories'])
     var groupData = {'name': $scope.poolName, 'group_size': $scope.groupSizeSelect}
     console.log('goupData', groupData)
     DB.createClass(members, groupData)
-    .then(function(resp){console.log('pool created')})
+    .then(function(resp){console.log('pool created', resp)})
     .catch(function(err){console.log('pool not created', err)})
 
   }
