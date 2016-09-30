@@ -37,7 +37,7 @@ angular.module('PU', [
   var controller = function($scope, $location, $http, CurrentUser){
     var path = $location.path();
     $scope.nicknames = {
-      //TODO
+      'a4fa408de847' : 'patty cakes'
     }
     $scope.hideMyPools = path === '/'; //NB: these routes might change
     $scope.hideCreatePool = path === '/createPool';
