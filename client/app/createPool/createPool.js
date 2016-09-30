@@ -156,7 +156,6 @@ angular.module('PU.createPool', ['PU.factories'])
                   console.log('$scope.allCohorts', $scope.allCohorts)
                 // }
               }
-              // if()
 
               console.log("Current scope: ", $scope);
               $scope.$apply();
