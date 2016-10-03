@@ -1,5 +1,5 @@
 <div header></div>
-<div loading class="extraBtn allHeight" ng-show="loading"></div>
+<div loading class="extraBtn" ng-show="loading"></div>
 <div class="home fade" ng-hide="loading">
   <h1 class="homeTitle">{{currentUser.name + "'s Pools"}}</h1>
   <div class="homePool"  ng-repeat="pool in pools" ng-show="pools.length && !loading">
