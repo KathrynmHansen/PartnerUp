@@ -1,10 +1,13 @@
 angular.module('PU.home', ['PU.factories'])
 
 .controller('HomeController', function ($scope, MakerPass, $location, $route, $http, StateSaver, DB, CurrentUser) {
-document.getElementById("bodyclass").className = "";
 $scope.currentUser = {} //where we store the current user's information 
 $scope.pools = []; //where  we store the total amout of pools from the owner
 $scope.loading = true;
+
+//******************************************************************************
+//This shows all the pools that the user belongs too
+//******************************************************************************
 
 $scope.showPools = function(){
  return DB.getClasses()
@@ -16,13 +19,26 @@ $scope.showPools = function(){
   .catch(function(err){console.log('showPools err',err);})
 }
 
+//******************************************************************************
+//This allows you to go to the create pool page
+//******************************************************************************
+
 $scope.goToCreatePool = function(){
   $location.path('/createPool')
 }
 
+//******************************************************************************
+//This makes pools clickable so you can go to their specific pool page
+//******************************************************************************
+
 $scope.goToPool = function(pool){
   $location.path(`/pools/${pool.id}`);
 }
+
+//******************************************************************************
+//This allows you to delete entire pools, only if you are the admin of the pool
+//it does give you a warning incase of accidentally clicking.
+//******************************************************************************
 
 $scope.deletePool = function(pool){
   if(pool.role === 'fellow' || pool.role === 'instructor' || pool.role === 'memberAdmin' ){
@@ -41,6 +57,11 @@ $scope.deletePool = function(pool){
     alert("you are not an admin, you may not delete this pool")
   }
 }
+
+//******************************************************************************
+//This initalizes the page and sets the signed in user to the current user. It 
+//also calls show pools so all the pools may be displayed on the page.
+//******************************************************************************
 
  var init = (function(){ //function that runs on load; it'll call all the fns to set up the page
     
@@ -67,8 +88,6 @@ $scope.deletePool = function(pool){
           .then(function(resolveData){
             console.log("Promises resolved");
             console.log('resolveData', resolveData)
-            // $scope.modalCohorts = resolveData[1];
-            // $scope.initialized = true;
             console.log("Current scope: ", $scope);
             $scope.loading = false;
             $scope.$apply();
@@ -79,7 +98,6 @@ $scope.deletePool = function(pool){
       $location.path('/signin');
       $scope.$apply();
      })
-    //})
   }())
 
 
