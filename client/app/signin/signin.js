@@ -50,6 +50,11 @@ angular.module('PU.signin', [
       document.cookie = `token=${signInInfo.token}`;
       //CurrentUser.set(signInInfo.data.user);
       $window.location.href = ('/#/');
+  }})
   }
+
 });
+
+
+
 

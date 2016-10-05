@@ -22,7 +22,7 @@ angular.module('PU.poolPage', ['PU.factories'])
   $scope.error = "";
   var groupSize = 2;
   var timeoutCounter = 0;
-  var timeoutThreshold = 5000;
+  var timeoutThreshold = 4000;
 
   var init = (function(){ //function that runs on load; it'll call all the fns to set up the page
     new Clipboard('.clipyclip');
