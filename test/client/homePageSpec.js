@@ -55,13 +55,13 @@ describe('The Home Page', function() {
     deferred = $q.defer();
     // spyOn($location, 'path').and.returnValue('/');
     var $controller = $injector.get('$controller');
-    spyOn(DB, 'getClasses').and.returnValue(deferred.promise);
+    
 
     createController = function () {
       return $controller('HomeController', {
         $scope: $scope,
         $location: $location,
-        getClasses: getClasses
+        // getClasses: getClasses
       });
     };
   }));
@@ -105,7 +105,8 @@ it('goToPool', function () {
   expect($scope.goToPool).toBeDefined();
 });
 
-it('showsPools should resolve a promise', function(){
+it('showsPools should resolve a promise', function(done){
+  // spyOn(DB, 'getClasses').and.returnValue(deferred.promise);
   var mockPools = [{
         id: 1,
         name:"abc",
@@ -130,10 +131,17 @@ it('showsPools should resolve a promise', function(){
         role: "instructor",
         size:5
         }];
-  deferred.resolve(mockPools);
+        var currUser = {name: "test"};
+            $httpBackend.expectGET("home/home.html").respond([]);
+    $httpBackend.expectGET("/currentUser").respond(currUser);
+    // $httpBackend.expectDELETE( `/group/${groupId}`);
+    $httpBackend.expectGET("/groups").respond(mockPools);
+  // deferred.resolve(mockPools);
+  createController();
   $scope.$apply();
   expect($scope.pools).not.toBe(undefined);
-  
+  expect($scope.pools).toEqual(mockPools);
+  done();
 })
 
 //   it('should resolve with mockPools', function () {
