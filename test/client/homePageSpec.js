@@ -11,6 +11,8 @@ describe('The Home Page', function() {
   var $routeParams;
   var StateSaver;
   var $location;
+  var $q;
+  var deferred;
 
   var testPools = [
         {
@@ -49,14 +51,17 @@ describe('The Home Page', function() {
     StateSaver = $injector.get('StateSaver');
     DB = $injector.get('DB');
     $location = $injector.get('$location');
+    $q = $injector.get('$q');
+    deferred = $q.defer();
     // spyOn($location, 'path').and.returnValue('/');
     var $controller = $injector.get('$controller');
+    spyOn(DB, 'getClasses').and.returnValue(deferred.promise);
 
     createController = function () {
       return $controller('HomeController', {
         $scope: $scope,
-        $location: $location
-        // pools: mockPools
+        $location: $location,
+        getClasses: getClasses
       });
     };
   }));
@@ -99,6 +104,37 @@ it('goToPool', function () {
     createController();
   expect($scope.goToPool).toBeDefined();
 });
+
+it('showsPools should resolve a promise', function(){
+  var mockPools = [{
+        id: 1,
+        name:"abc",
+        role: "student",
+        size:2
+        },
+        {
+         id: 2,
+        name:"234",
+        role: "memberAdmin",
+        size:4
+        },
+        {
+         id: 3,
+        name:"def",
+        role: "fellow",
+        size:3
+        },
+        {
+        id: 4,
+        name:"!@#$",
+        role: "instructor",
+        size:5
+        }];
+  deferred.resolve(mockPools);
+  $scope.$apply();
+  expect($scope.pools).not.toBe(undefined);
+  
+})
 
 //   it('should resolve with mockPools', function () {
 //      var mockPools = [{
